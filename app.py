@@ -95,7 +95,7 @@ if selected == 'Reached.on.Time_Y.N':
 
     # creating a button for Prediction
 
-    if st.button('Reached.on.Time_Y.N'):
+    if st.button('Submit'):
 
         user_input = [Customer_care_calls, Customer_rating, Cost_of_the_Product, Prior_purchases, Product_importance,
                       Gender, Discount_offered, Weight_in_gms, Warehouse_block_0, Warehouse_block_1, Warehouse_block_2,
