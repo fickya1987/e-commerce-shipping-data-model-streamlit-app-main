@@ -1,7 +1,6 @@
 import os
 from joblib import load
 import streamlit as st
-import pickle
 from streamlit_option_menu import option_menu
 
 # Set page configuration
@@ -9,16 +8,19 @@ st.set_page_config(page_title="e-commerce-shipping",
                    layout="wide",
                    page_icon="🚚")
 
-# Getting the working directory of the main.py
+# Getting the absolute working directory of the main.py
 working_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct absolute path to the model file
+model_path = os.path.join(working_dir, 'saved_models', 'e-com.sav')
 
 # Load the saved model
 try:
-    ecom_model = pickle.load(open(f'{working_dir}/saved_models/ecom.sav', 'rb'))
+    ecom_model = load(model_path)
 except Exception as e:
     st.error(f"Error loading the model: {e}")
     ecom_model = None  # Assign None to ecom_model if loading fails
-
+  
 # Sidebar for navigation
 with st.sidebar:
     selected = option_menu('E-commerce Shipping Prediction System',
