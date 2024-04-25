@@ -14,7 +14,7 @@ working_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Load the saved model
 try:
-    ecom_model = pickle.load(open(f'{working_dir}/saved_models/heart_disease_model.sav', 'rb'))
+    ecom_model = pickle.load(open(f'{working_dir}/saved_models/ecom.sav', 'rb'))
 except Exception as e:
     st.error(f"Error loading the model: {e}")
     ecom_model = None  # Assign None to ecom_model if loading fails
