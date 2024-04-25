@@ -13,7 +13,7 @@ working_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Load the saved model
 try:
-    ecom_model = load(f'{working_dir}/saved_models/e-com.sav')
+    ecom_model = load(f'{working_dir}/saved_models/ecom.sav')
 except Exception as e:
     st.error(f"Error loading the model: {e}")
     ecom_model = None  # Assign None to ecom_model if loading fails
