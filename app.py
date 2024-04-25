@@ -1,5 +1,5 @@
 import os
-import pickle
+from joblib import load
 import streamlit as st
 from streamlit_option_menu import option_menu
 
@@ -8,37 +8,31 @@ st.set_page_config(page_title="e-commerce-shipping",
                    layout="wide",
                    page_icon="🚚")
 
-    
-# getting the working directory of the main.py
+# Getting the working directory of the main.py
 working_dir = os.path.dirname(os.path.abspath(__file__))
 
-# loading the saved models
-from joblib import load
-import pickle
-
+# Load the saved model
 try:
-    # Using joblib to load the model
     ecom_model = load(f'{working_dir}/saved_models/e-com.sav')
 except Exception as e:
-    print(f"Error loading the model: {e}")
+    st.error(f"Error loading the model: {e}")
+    ecom_model = None  # Assign None to ecom_model if loading fails
 
-# sidebar for navigation
+# Sidebar for navigation
 with st.sidebar:
     selected = option_menu('E-commerce Shipping Prediction System',
-
                            ['Reached.on.Time_Y.N'],
                            menu_icon='wrapped-gift',
                            icons=['person'],
                            default_index=0)
 
-
-# Diabetes Prediction Page
+# E-commerce Shipping Prediction Page
 if selected == 'Reached.on.Time_Y.N':
 
-    # page title
+    # Page title
     st.title('E-commerce Shipping Prediction using ML')
 
-    # getting the input data from the user
+    # Getting the input data from the user
     col1, col2, col3 = st.columns(3)
 
     with col1:
@@ -89,13 +83,11 @@ if selected == 'Reached.on.Time_Y.N':
     with col1:
         Mode_of_Shipment_2 = st.text_input('Mode_of_Shipment_2')
 
-
-    # code for Prediction
+    # Code for Prediction
     Time_YN = ''
 
-    # creating a button for Prediction
-
-    if st.button('Submit'):
+    # Creating a button for Prediction
+    if ecom_model and st.button('Reached.on.Time_Y.N'):
 
         user_input = [Customer_care_calls, Customer_rating, Cost_of_the_Product, Prior_purchases, Product_importance,
                       Gender, Discount_offered, Weight_in_gms, Warehouse_block_0, Warehouse_block_1, Warehouse_block_2,
