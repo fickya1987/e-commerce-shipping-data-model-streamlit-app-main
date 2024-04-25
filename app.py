@@ -14,7 +14,7 @@ working_dir = os.path.dirname(os.path.abspath(__file__))
 
 # loading the saved models
 
-ecom_model = pickle.load(open(f'{working_dir}/saved_models/e-com.sav', 'rb'))
+ecom_model = pickle.load(open(f'{working_dir}/saved_models/ecom.sav', 'rb'))
 
 # sidebar for navigation
 with st.sidebar:
