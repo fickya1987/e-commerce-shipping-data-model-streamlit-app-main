@@ -13,8 +13,8 @@ st.set_page_config(page_title="e-commerce-shipping",
 working_dir = os.path.dirname(os.path.abspath(__file__))
 
 # loading the saved models
-
-ecom_model = pickle.load(open(f'{working_dir}/saved_models/ecom.sav', 'rb'))
+from joblib import load
+ecom_model = load(f'{working_dir}/saved_models/ecom.sav')
 
 # sidebar for navigation
 with st.sidebar:
