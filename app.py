@@ -13,7 +13,7 @@ st.set_page_config(page_title="e-commerce-shipping",
 working_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Construct absolute path to the model file
-model_path = os.path.join(working_dir, 'saved_models', 'svc.pkl')
+model_path = os.path.join(working_dir, 'saved_models', 'ecom.sav')
 
 # Load the saved model
 try:
