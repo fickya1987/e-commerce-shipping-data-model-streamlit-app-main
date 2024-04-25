@@ -13,8 +13,13 @@ st.set_page_config(page_title="e-commerce-shipping",
 working_dir = os.path.dirname(os.path.abspath(__file__))
 
 # loading the saved models
-from joblib import load
-ecom_model = load(f'{working_dir}/saved_models/ecom.sav')
+import pickle
+
+try:
+    with open(f'{working_dir}/saved_models/ecom.sav', 'rb') as f:
+        ecom_model = pickle.load(f)
+except Exception as e:
+    print(f"Error loading the pickle file: {e}")
 
 # sidebar for navigation
 with st.sidebar:
