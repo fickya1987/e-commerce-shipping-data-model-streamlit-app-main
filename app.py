@@ -1,6 +1,7 @@
 import os
 from joblib import load
 import streamlit as st
+import pickle
 from streamlit_option_menu import option_menu
 
 # Set page configuration
